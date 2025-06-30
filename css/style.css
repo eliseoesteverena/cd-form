@@ -9,13 +9,14 @@ input {background-color: #fff !important;}
 header a, .label-open-sub{ float: left;display: flex;color: #f2f2f2;text-align: center; padding: 1rem;text-decoration: none;font-size: 1.1rem;border-bottom: 3px solid transparent; border-top: 3px solid transparent;font-weight: 500;
 }
 header a:hover {color: #111030;border-bottom-color: #111030;}
-.link-correo-arg {background-color: #FFCE00; color:#152663;}
+.link-correo-arg {background-color: #FFCE00; color:#152663;font-weight: 600;}
 .link-correo-arg:hover {background-color: #152663;color:#FFCE00;border-bottom-color: #FFCE00;}
-.link-andreani {background-color: #d71920; color:#ffffff;}
+.link-andreani {background-color: #d71920; color:#ffffff;font-weight: 600;}
 .link-andreani:hover {background-color: #ffffff;color:#d71920;border-bottom-color: #d71920;}
 
 header a {background-color: #1798e2; color: white;}
 header a:hover {color: #111030;}
+
 input[type="checkbox"].open-menu {appearance: none;border:none;padding: 0; margin:0;}
 
 .label-open-sub, .open-menu { display: none; margin-inline-end: 0; }
@@ -28,8 +29,9 @@ input[type="checkbox"]:checked ~ nav { display: block; }
 .new-cd-link span {font-weight: 400;margin: 0 auto;}
 .new-cd-link h1 { font-size: 3em;font-weight: 600;line-height: 0.8em;letter-spacing: -1px;font-weight: 600;font-style: normal;text-align: center;padding: 0.3em;}
 
+.container {margin-bottom: 5rem;}
 
-#editor {height: 300px; margin-bottom: 1rem; background: white;}
+#editor {min-height: 600px; margin-bottom: 1rem; background: white;}
 
 #editor [role=button], #editor [type=button], #editor [type=file]::file-selector-button, #editor [type=reset], #editor [type=submit], #editor button {all: unset;}
 

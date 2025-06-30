@@ -1,10 +1,10 @@
-const header = document.querySelector("header")
+/*const header = document.querySelector("header")
 
 header.innerHTML = `
 <a href="#" class="active">Inicio</a> <input type="checkbox" id="open-menu" class="open-menu"><label class="label-open-sub" for="open-menu">Menú</label>
 	<nav class="topnav" id="myTopnav"> <a class="link-correo-arg" href="correo-argentino-cd.html">Nueva CD Correo Argentino</a><a href="instrucciones.html">Instrucciones</a> <a href="about.html">Acerca de</a></nav>
 
-`;
+`;*/
 // Initialize Quill editor with custom toolbar options
 const quill = new Quill('#editor', {
     theme: 'snow',
