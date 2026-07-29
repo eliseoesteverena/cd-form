@@ -55,7 +55,6 @@ async function previewPDF(type) {
                         padding: 0;
                     }
                     body {
-                        background-color: #323639;
                         display: flex;
                         justify-content: center;
                         align-items: flex-start;
