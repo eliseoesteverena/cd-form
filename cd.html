@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Generator with Quill Editor</title>
+    <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"-->
+    <!--link rel="stylesheet" href="css/m.min.css"-->
+    <!-- Include Quill stylesheet -->
+    <link href="css/quill.snow.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+     
+    <!-- Include Quill and jsPDF -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<!-- Librería para leer archivos Word (.docx) en el navegador -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body>
+    <header>
+</header>
+<!--main class="container py-6">
+    <h1 class="mb-6">Generar Carta Documento</h1>
+
+    <div class="flex flex-col gap-6 mb-6">
+        
+        <section class="border rounded-lg p-4">
+            <h3 class="mb-4">Datos Remitente:</h3>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group">
+                    <label for="nombre_rt">Nombre:</label>
+                    <input type="text" id="nombre_rt" placeholder="Nombre del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="domicilio_rt">Dirección:</label>
+                    <input type="text" id="domicilio_rt" placeholder="Dirección del Remitente" value="">
+                </div>
+            </div>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="form-group">
+                    <label for="cp_rt">Código Postal:</label>
+                    <input type="text" id="cp_rt" placeholder="Código Postal del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="localidad_rt">Localidad:</label>
+                    <input type="text" id="localidad_rt" placeholder="Localidad del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="provincia_rt">Provincia:</label>
+                    <input type="text" id="provincia_rt" placeholder="Provincia del Remitente" value="">
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="border rounded-lg p-4">
+            <h3 class="mb-4">Datos Destinatario:</h3>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group">
+                    <label for="nombre_dt">Nombre:</label>
+                    <input type="text" id="nombre_dt" placeholder="Nombre del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="domicilio_dt">Dirección:</label>
+                    <input type="text" id="domicilio_dt" placeholder="Dirección del Destinatario" value="">
+                </div>
+            </div>
+
+           
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="form-group">
+                    <label for="cp_dt">Código Postal:</label>
+                    <input type="text" id="cp_dt" placeholder="Código Postal del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="localidad_dt">Localidad:</label>
+                    <input type="text" id="localidad_dt" placeholder="Localidad del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="provincia_dt">Provincia:</label>
+                    <input type="text" id="provincia_dt" placeholder="Provincia del Destinatario" value="">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <h3 class="mb-3">Contenido de la carta</h3>
+    <div id="editor" class="mb-6">
+        ,   de julio de 2026
+Por medio de la presente niego todo y cada uno de los términos expuestos por Usted en CD Nro. 385526901, por resultar los mismos improcedentes, maliciosos, falaces y temerarios, en todos sus términos. 
+Asimismo, rechazo específicamente que i) Ud. aun este aguardando respuesta de misiva enviada en fecha 3/7/26, ii) nuestra conducta sea la de omisión a reclamos verbales, iii) a Ud. le asista derecho de exigir correcta registración laboral, iv) se le hayan negado tareas el pasado 3/7/26 v) esta parte deba aclarar situación laboral, vi) le asista derecho considerarse gravemente injuriada y despedida por mi exclusiva culpa, vii) esta parte deba regularizar la situación laboral, viii) Ud. laborara de lunes 7.30hs a 15hs, miércoles y jueves de 13 a 21hs, viernes de 11 a 19hs, y sábados y domingos con horarios rotativos, con franco los días martes, ix) Ud. laborara horas extras, x) Ud. percibiera remuneración mensual de $ 1030000, xi) falazmente en su recibo figuren $ 700000, xii) esta parte abone $ 330000 en EFECTIVO sin registración, xiii) le asista derecho de reclamar conforme arts. 10, 11 y 15 Ley 24013, xiv) esta parte deba abonar diferencias salariales, xv) esta parte deba acreditar aportes y contribuciones, bajo apercibimiento art. 132bis LCT, xvi) a Ud. le asista derecho de FORMAL RETENCION DE TAREAS, xvii) la tacha de inconstitucionalidad, inconvencionalidad o inaplicabilidad deducida respecto del DNU 70/2023, la Ley 27.742, el Decreto 847/24 y la Ley 27.802, la existencia de los supuestos hechos denunciados, así como cualquier tipo de daño patrimonial, extrapatrimonial, punitivo, moratorio o perjuicio que invoque, todo ello en virtud que todo su reclamo es contrario a derecho, y a la realidad fáctica. 
+Asimismo, se le hace saber que su pretensión de constituirse en situación de despido indirecto resulta extemporánea, improcedente y preclusa. El vínculo laboral ya se encuentra disuelto con anterioridad por su exclusiva culpa bajo la figura de abandono de trabajo, configurado tras su negativa a presentarse a cumplir tareas y justificar inasistencias, pese a estar debidamente intimada mediante nuestra misiva de fecha 03/07/2026 y aguardada bajo presencia de testigos. Su falta de comparecencia extinguió el contrato, por lo que carece de derecho alguno para disponer un despido indirecto posterior.
+Por lo expuesto, reitero la intimación a abstenerse de proseguir con reclamos ilegítimos e infundados. Toda vez que la liquidación final, el certificado de servicios y remuneraciones y el certificado de trabajo Art. 80 LCT fueron puestos oportunamente a su disposición en legal tiempo y forma, y no habiéndose presentado usted a retirarlos a la fecha, es que ratifico lo ya apercibido y me reservo el derecho de consignarlos judicialmente por su exclusiva responsabilidad y negativa a recibirlos. Queda Usted debidamente notificada e intimada. Cierro intercambio epistolar. Conste.-  
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+        <button class="link-andreani" onclick="generatePDF('cd_correo_andreani')">CD para Andreani</button>
+        <button class="link-correo-arg" onclick="generatePDF('cd_correo_arg')">CD para Correo Argentino</button>
+    </div> 
+</main-->
+
+<main class="container py-6">
+    <h1 class="mb-6">Generar Carta Documento</h1>
+
+    <div class="flex flex-col gap-6 mb-6">
+        <!-- Sección Remitente -->
+        <section class="border rounded-lg p-4">
+            <h3 class="mb-4">Datos Remitente:</h3>
+
+            <!-- 2 Columnas: Nombre y Dirección -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group">
+                    <label for="nombre_rt">Nombre:</label>
+                    <input type="text" id="nombre_rt" placeholder="Nombre del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="domicilio_rt">Dirección:</label>
+                    <input type="text" id="domicilio_rt" placeholder="Dirección del Remitente" value="">
+                </div>
+            </div>
+
+            <!-- 3 Columnas: CP, Localidad y Provincia -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="form-group">
+                    <label for="cp_rt">Código Postal:</label>
+                    <input type="text" id="cp_rt" placeholder="Código Postal del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="localidad_rt">Localidad:</label>
+                    <input type="text" id="localidad_rt" placeholder="Localidad del Remitente" value="">
+                </div>
+                <div class="form-group">
+                    <label for="provincia_rt">Provincia:</label>
+                    <input type="text" id="provincia_rt" placeholder="Provincia del Remitente" value="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Destinatario -->
+        <section class="border rounded-lg p-4">
+            <h3 class="mb-4">Datos Destinatario:</h3>
+
+            <!-- 2 Columnas: Nombre y Dirección -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="form-group">
+                    <label for="nombre_dt">Nombre:</label>
+                    <input type="text" id="nombre_dt" placeholder="Nombre del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="domicilio_dt">Dirección:</label>
+                    <input type="text" id="domicilio_dt" placeholder="Dirección del Destinatario" value="">
+                </div>
+            </div>
+
+            <!-- 3 Columnas: CP, Localidad y Provincia -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="form-group">
+                    <label for="cp_dt">Código Postal:</label>
+                    <input type="text" id="cp_dt" placeholder="Código Postal del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="localidad_dt">Localidad:</label>
+                    <input type="text" id="localidad_dt" placeholder="Localidad del Destinatario" value="">
+                </div>
+                <div class="form-group">
+                    <label for="provincia_dt">Provincia:</label>
+                    <input type="text" id="provincia_dt" placeholder="Provincia del Destinatario" value="">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <h3 class="mb-3">Contenido de la carta</h3>
+    <div id="editor" class="mb-6"></div>
+
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+    <!-- Grupo Andreani -->
+    <div class="flex rounded-lg overflow-hidden shadow-sm">
+        <button class="link-andreani flex-1" onclick="generatePDF('cd_correo_andreani')">
+            CD para Andreani
+        </button>
+        <button class="link-andreani btn-preview border-l border-white/20 rounded-r-none px-4 flex items-center justify-center hover:bg-black/10 transition-colors" 
+                onclick="previewPDF('cd_correo_andreani')" 
+                title="Vista previa Andreani">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Grupo Correo Argentino -->
+    <div class="flex rounded-lg overflow-hidden shadow-sm">
+        <button class="link-correo-arg flex-1" onclick="generatePDF('cd_correo_arg')">
+            CD para Correo Argentino
+        </button>
+        <button class="link-correo-arg btn-preview border-l border-white/20 rounded-r-none px-4 flex items-center justify-center hover:bg-black/10 transition-colors" 
+                onclick="previewPDF('cd_correo_arg')" 
+                title="Vista previa Correo Argentino">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+        </button>
+    </div>
+</div>
+
+</main>
+   <script src="js/index.js"></script>
+</body>
+</html>

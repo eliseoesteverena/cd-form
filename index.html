@@ -1,90 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Generator with Quill Editor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <!-- Include Quill stylesheet -->
-    <link href="css/quill.snow.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-     
-    <!-- Include Quill and jsPDF -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <title>Generador de Cartas Documento | Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Geist', 'sans-serif'] },
+                    colors: {
+                        primary: '#0f172a',
+                        'primary-light': '#f8fafc',
+                        accent: '#2563eb'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <header>
-</header>
-    <main class="container">
-        <h1>Generar Carta Documento</h1>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
-        <div class="form-grid">
-            <section>
-                <h3>Información del Remitente</h3>
-                <div class="grid">
-                    <div class="form-group">
-                        <label for="nombre_rt">Nombre:</label>
-                        <input type="text" id="nombre_rt" placeholder="Nombre del Remitente">
-                    </div>
-                    <div class="form-group">
-                        <label for="domicilio_rt">Dirección:</label>
-                        <input type="text" id="domicilio_rt" placeholder="Dirección del Remitente">
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="form-group">
-                        <label for="cp_rt">Código Postal:</label>
-                        <input type="text" id="cp_rt" placeholder="Código Postal del Remitente">
-                    </div>
-                    <div class="form-group">
-                        <label for="localidad_rt">Localidad:</label>
-                        <input type="text" id="localidad_rt" placeholder="Localidad del Remitente">
-                    </div>
-                    <div class="form-group">
-                        <label for="provincia_rt">Provincia:</label>
-                        <input type="text" id="provincia_rt" placeholder="Provincia del Remitente">
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h3>Información del Destinatario</h3>
-                <div class="grid">
-                    <div class="form-group">
-                        <label for="nombre_dt">Nombre:</label>
-                        <input type="text" id="nombre_dt" placeholder="Nombre del Destinatario">
-                    </div>
-                    <div class="form-group">
-                        <label for="domicilio_dt">Dirección:</label>
-                        <input type="text" id="domicilio_dt" placeholder="Dirección del Destinatario">
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="form-group">
-                        <label for="cp_dt">Código Postal:</label>
-                        <input type="text" id="cp_dt" placeholder="Código Postal del Destinatario">
-                    </div>
-                    <div class="form-group">
-                        <label for="localidad_dt">Localidad:</label>
-                        <input type="text" id="localidad_dt" placeholder="Localidad del Destinatario">
-                    </div>
-                    <div class="form-group">
-                        <label for="provincia_dt">Provincia:</label>
-                        <input type="text" id="provincia_dt" placeholder="Provincia del Destinatario">
-                    </div>
-                </div>
-            </section>
+    <!-- Navegación -->
+    <header class="bg-white border-b py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center max-w-5xl">
+            <div class="font-bold text-xl tracking-tight">Docu<span class="text-accent">Print</span></div>
+            <nav class="flex gap-6 text-sm font-medium">
+                <a href="#" class="hover:text-accent transition-colors">La Herramienta</a>
+                <a href="ayuda.html" class="hover:text-accent transition-colors">Cómo se completa</a>
+            </nav>
         </div>
+    </header>
 
-        <h3>Contenido de la carta</h3>
-        <div id="editor">Cuerpo de la carta...</div>
-       <div class="grid">
-            <button class="link-andreani" onclick="generatePDF('cd_correo_andreani')">CD para Andreani</button>
-            <button class="link-correo-arg" onclick="generatePDF('cd_correo_arg')">CD para Correo Argentino</button>
-        </div> 
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <section class="container mx-auto px-6 py-16 max-w-5xl text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-primary">
+                Imprimí tus Cartas Documento con <br class="hidden md:block">Precisión Profesional
+            </h1>
+            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Olvidate de la máquina de escribir y de renegar con los márgenes. Generá el PDF exacto para imprimir directamente sobre los formularios preimpresos oficiales de Correo Argentino y Andreani.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="generador.html" class="bg-accent hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors shadow-sm">
+                    Abrir Generador
+                </a>
+                <a href="ayuda.html" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-3 px-8 rounded-lg transition-colors shadow-sm">
+                    Ver Instructivo
+                </a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="bg-white border-y py-16">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <!-- Feature 1 -->
+                    <div class="text-left">
+                        <div class="w-12 h-12 bg-primary-light text-accent rounded-xl flex items-center justify-center mb-4 border">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Márgenes Calibrados</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Diseñado específicamente para que el texto encaje a la perfección en los campos del formulario físico (triplicado) sin pisar las líneas.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="text-left">
+                        <div class="w-12 h-12 bg-primary-light text-accent rounded-xl flex items-center justify-center mb-4 border">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Asistente Inteligente</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Subí tu documento Word o pegá el texto en bruto. Nuestra integración extrae automáticamente los datos del remitente y destinatario.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="text-left">
+                        <div class="w-12 h-12 bg-primary-light text-accent rounded-xl flex items-center justify-center mb-4 border">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Soporte Multicorreo</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Generá la vista previa y el PDF final optimizado tanto para las planillas de Correo Argentino como para las de Andreani con un solo clic.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
-   <script src="js/index.js"></script>
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8 border-t text-center text-sm text-gray-500">
+        <p>© 2026 DocuPrint. Herramienta de uso libre.</p>
+    </footer>
+
 </body>
 </html>
